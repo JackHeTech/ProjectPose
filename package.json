@@ -1,0 +1,22 @@
+{
+  "name": "projectpose",
+  "version": "1.0.0",
+  "description": "",
+  "main": "sketch.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheD3vel0per/ProjectPose.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TheD3vel0per/ProjectPose/issues"
+  },
+  "homepage": "https://github.com/TheD3vel0per/ProjectPose#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
