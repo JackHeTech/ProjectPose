@@ -20,46 +20,14 @@
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:new_stuff" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:main" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e19861e8-4936-4e24-8d06-50ce38a86e5a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/electron.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CODE_OF_CONDUCT.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/assets.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/entitlements.mac.plist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icon.icns" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icon.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/1024x1024.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/128x128.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/16x16.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/24x24.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/256x256.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/32x32.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/48x48.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/512x512.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/64x64.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/96x96.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/babel.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.global.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/__tests__/App.test.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.dev.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.prod.js.LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/menu.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +44,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
+        <entry key="$PROJECT_DIR$" value="main" />
         <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
@@ -129,7 +98,7 @@
       <workItem from="1610218711782" duration="706000" />
       <workItem from="1610219575645" duration="516000" />
       <workItem from="1610220129447" duration="8530000" />
-      <workItem from="1610230031655" duration="1033000" />
+      <workItem from="1610230031655" duration="3886000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1610219753616</created>
@@ -166,7 +135,21 @@
       <option name="project" value="LOCAL" />
       <updated>1610229923362</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="new react stuff">
+      <created>1610231418032</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1610231418032</updated>
+    </task>
+    <task id="LOCAL-00007" summary="bye bye world">
+      <created>1610234280053</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1610234280053</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,7 +166,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="new_stuff" />
+                        <option value="main" />
                       </list>
                     </value>
                   </entry>
@@ -201,7 +184,9 @@
     <MESSAGE value="next initial commit" />
     <MESSAGE value="added .erb" />
     <MESSAGE value="stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="stuff" />
+    <MESSAGE value="new react stuff" />
+    <MESSAGE value="bye bye world" />
+    <option name="LAST_COMMIT_MESSAGE" value="bye bye world" />
   </component>
   <component name="WindowStateProjectService">
     <state x="-2260" y="-466" width="1147" height="696" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1610226251657">
@@ -268,14 +253,19 @@
     </state>
     <state width="1707" height="505" key="GridCell.Tab.2.right/0.-1055.1920.1055/-4520.-1153.1080.1895/-3440.-838.3440.1440/0.25.1680.1025@-3440.-838.3440.1440" timestamp="1610229990891" />
     <state width="1707" height="505" key="GridCell.Tab.2.right/0.-1080.1920.1080/-4520.-1178.1080.1920/-3440.-838.3440.1440/0.0.1680.1050@-3440.-838.3440.1440" timestamp="1610226458303" />
-    <state x="-2616" y="-553" key="Vcs.Push.Dialog.v2" timestamp="1610229397290">
+    <state x="-2616" y="-553" key="Vcs.Push.Dialog.v2" timestamp="1610234287555">
       <screen x="-3440" y="-838" width="3440" height="1440" />
     </state>
     <state x="-2616" y="-553" key="Vcs.Push.Dialog.v2/0.-1055.1920.1055/-4520.-1153.1080.1895/-3440.-838.3440.1440/0.25.1680.1025@-3440.-838.3440.1440" timestamp="1610229397290" />
+    <state x="-2616" y="-553" key="Vcs.Push.Dialog.v2/0.-1080.1920.1080/-4520.-1178.1080.1920/-3440.-838.3440.1440/0.0.1680.1050@-3440.-838.3440.1440" timestamp="1610234287555" />
     <state x="460" y="-866" key="Vcs.Push.Dialog.v2/0.-1080.1920.1080/-4520.-1178.1080.1920/-3440.-838.3440.1440/0.0.1680.1050@0.-1080.1920.1080" timestamp="1610220156273" />
-    <state x="-2139" y="-514" width="838" height="1032" key="search.everywhere.popup" timestamp="1610220274955">
+    <state x="-2029" y="-469" key="git4idea.branch.GitSmartOperationDialog" timestamp="1610231459343">
       <screen x="-3440" y="-838" width="3440" height="1440" />
     </state>
-    <state x="-2139" y="-514" width="838" height="1032" key="search.everywhere.popup/0.-1080.1920.1080/-4520.-1178.1080.1920/-3440.-838.3440.1440/0.0.1680.1050@-3440.-838.3440.1440" timestamp="1610220274955" />
+    <state x="-2029" y="-469" key="git4idea.branch.GitSmartOperationDialog/0.-1080.1920.1080/-4520.-1178.1080.1920/-3440.-838.3440.1440/0.0.1680.1050@-3440.-838.3440.1440" timestamp="1610231459343" />
+    <state x="-2139" y="-514" width="838" height="1032" key="search.everywhere.popup" timestamp="1610231422989">
+      <screen x="-3440" y="-838" width="3440" height="1440" />
+    </state>
+    <state x="-2139" y="-514" width="838" height="1032" key="search.everywhere.popup/0.-1080.1920.1080/-4520.-1178.1080.1920/-3440.-838.3440.1440/0.0.1680.1050@-3440.-838.3440.1440" timestamp="1610231422989" />
   </component>
 </project>
