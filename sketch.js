@@ -17,6 +17,14 @@ function badPosture() {
   addPostureToData(poses, 0);
 }
 
+function loadData() {
+  nn.loadData("/data.json");
+}
+
+function saveData() {
+  nn.saveData("data");
+}
+
 // Train the model
 function trainModel() {
   nn.normalizeData();

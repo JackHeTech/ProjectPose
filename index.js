@@ -10,4 +10,8 @@ app.get("/sketch.js", function (req, res) {
   res.sendFile(path.join(__dirname + "/sketch.js"));
 });
 
+app.get("/data.json", function (req, res) {
+  res.sendFile(path.join(__dirname + "/data.json"));
+});
+
 app.listen(3000);
