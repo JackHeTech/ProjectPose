@@ -132,10 +132,11 @@
         <div id="link-quit"><span style="opacity:0.5">&#8984;</span>Quit</div>
       </div>
     </div>
-
+    <div class="sketch-center">
       <div id="sketch-holder">
         <!-- Our sketch will go here! -->
       </div>
+    </div>
       <p id="command" class="command">Please sit with a good posture when you click Start Calibration
       </p>
   
@@ -155,8 +156,8 @@
     $(() => {
       views = new ViewsService();
       views.hideAllViews();
-      views.showView("calibrationPage");
-      views.hideCanvas();
+      views.showView("exercisePage");
+      views.showCanvas();
     });
 
     const showCalibration = () => {
