@@ -13,6 +13,7 @@
   <script src="./js/easytimer.min.js"></script>
   <script src="./js/countdown.js"></script>
   <script src="./js/jquery.min.js"></script>
+  <script src="./js/views.js"></script>
 </head>
 
 <body>
@@ -87,21 +88,62 @@
 
 
     </div>
+  </div>
+  <!-- Callibration Page -->
+  <div id="calibrationPage">
 
-    <div id="calibrationPage">
 
+    <!-- <div class="wrap">
+      <div class="content">
+        <div class="menu">
+            <div id="link-app">neckTech</div>
+            <div id="link-quit"><span style="opacity:0.5">&#8984;</span>Quit</div>
+        </div> -->
+
+
+    <div class="content">
+      <div class="menu">
+        <div id="link-app">neckTech</div>
+        <div id="link-quit"><span style="opacity:0.5">&#8984;</span>Quit</div>
+      </div>
     </div>
 
-    <div id="exercisePage">
+    <div class="row2">
+
+      <div class="column2 left" id="sketch-holder">
+        <!-- Our sketch will go here! -->
+      </div>
+      <p class="command">Please maintain a good posture for 10 seconds (Need to make the command dynamic)</p>
 
     </div>
+    <div class="column2 right">
+      <p class="timer">3</p>
+      <button class="button button3">Start Calibration</button>
+      <button class="button button3">Restart Calibration</button>
+    </div>
+  </div>
+  </div>
+
+  <div id="exercisePage">
+
+  </div>
 
   </div>
 
 
   <!-- You can also require other files to run in this process -->
   <script src="./renderer.js"></script>
-  <script src="./js/views.js"></script>
+  <script>
+    let views;
+
+    $(() => {
+      views = new ViewsService();
+      views.hideAllViews();
+      views.showView("calibrationPage");
+      views.showCanvas();
+    });
+  </script>
+
 </body>
 
 </html>
