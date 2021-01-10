@@ -12,7 +12,7 @@ function createWindow () {
     'accept-first-mouse': true,
     'title-bar-style': 'hidden',
     frame: true,
-    resizable: false,
+    resizable: true,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
     }

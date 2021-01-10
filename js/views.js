@@ -7,7 +7,7 @@ class ViewsService {
     views;
 
     constructor() {
-        views = [
+        this.views = [
             $(" #testPage "),
             $(" #homePage "),
             $(" #calibrationPage "),
@@ -19,9 +19,10 @@ class ViewsService {
      * Hide all views from sight (including the canvas)
      */
     hideAllViews() {
-        this.views.forEach(view => {
+        for (let i = 0; i < this.views.length; i++) {
+            const view = this.views[i];
             view.hide();
-        });
+        }
     }
 
     /**
