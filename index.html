@@ -2,10 +2,10 @@
 <html>
 
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>neckTech</title>
-  <link rel="stylesheet" type="text/css" href="css/photon.min.css">
-  <link rel="stylesheet" type="text/css" href="css/custom.css">
+  <link rel="stylesheet" type="text/css" href="css/photon.min.css" />
+  <link rel="stylesheet" type="text/css" href="css/custom.css" />
   <script src="./js/p5.min.js"></script>
   <script src="./js/p5.dom.min.js"></script>
   <script src="./js/ml5.min.js"></script>
@@ -18,13 +18,17 @@
 </head>
 
 <body>
-
   <div id="testPage">
+    <button onclick="posturenn.addPostureToData('SEATED TWIST LEFT')">SEATED TWIST LEFT</button>
+    <button onclick="posturenn.addPostureToData('SEATED TWIST RIGHT')">SEATED TWIST RIGHT</button>
+    <button onclick="posturenn.addPostureToData('NORMAL')">NORMAL</button>
     <button onclick="posturenn.goodPosture()">Good Posture</button>
     <button onclick="posturenn.badPosture()">Bad Posture</button>
     <button onclick="posturenn.trainModel()">Train</button>
     <button onclick="posturenn.saveData()">save Data</button>
     <button onclick="posturenn.loadData()">load Data</button>
+    <button onclick="posturenn.saveExerciseModel()">save Model</button>
+    <button onclick="posturenn.loadExerciseModel('seatedtwist')">load Model</button>
     <h1>Result: <span class="" id="result"></span></h1>
     <div id="sketch-holder">
       <!-- Our sketch will go here! -->
@@ -32,12 +36,13 @@
   </div>
 
   <div id="homePage">
-
     <div class="wrap">
       <div class="content">
         <div class="menu">
           <div id="link-app">neckTech</div>
-          <div id="link-quit"><span style="opacity:0.5">&#8984;</span>Quit</div>
+          <div id="link-quit">
+            <span style="opacity: 0.5">&#8984;</span>Quit
+          </div>
         </div>
         <div class="main">
           <div id="inactive">
@@ -69,66 +74,93 @@
             <input type="range" id="slider2" min="1" max="5" step="1" />
           </div>
         </div>
-
       </div>
-
 
       <div class="row">
         <div class="column">
           <button class="button button1">Check System Requirements</button>
-          <button onclick="showCalibration()" class="button button1">Calibrate Posture</button>
+          <button onclick="showCalibration()" class="button button1">
+            Calibrate Posture
+          </button>
         </div>
         <div class="column">
-          <button class="button button2">Update Software</button>
+          <button onclick="showExercise()" class="button button2">
+            Update Software
+          </button>
           <button class="button button2">Camera Settings</button>
           <button class="button button2">Other Settings</button>
           <button class="button button2">View License</button>
         </div>
       </div>
-
-
     </div>
   </div>
+
   <!-- Callibration Page -->
   <div id="calibrationPage">
-
-
-    <!-- <div class="wrap">
-      <div class="content">
-        <div class="menu">
-            <div id="link-app">neckTech</div>
-            <div id="link-quit"><span style="opacity:0.5">&#8984;</span>Quit</div>
-        </div> -->
-
-
     <div class="content">
       <div class="menu">
         <div id="link-app">neckTech</div>
-        <div id="link-quit"><span style="opacity:0.5">&#8984;</span>Quit</div>
+        <div id="link-quit">
+          <span style="opacity: 0.5">&#8984;</span>Quit
+        </div>
       </div>
     </div>
 
     <div class="row2">
-
       <div class="column2 left" id="sketch-holder">
         <!-- Our sketch will go here! -->
       </div>
-      <p id="command" class="command">Please sit with a good posture when you click Start Calibration
+      <p id="command" class="command">
+        Please sit with a good posture when you click Start Calibration
       </p>
-
     </div>
+
     <div class="column2 right">
       <p id="timer" class="timer">3</p>
-      <button onclick="posturenn.beginCalibration()" class=" button button3">Start Calibration</button>
+      <button onclick="posturenn.beginCalibration()" class="button button3">
+        Start Calibration
+      </button>
       <button class="button button3">Restart Calibration</button>
     </div>
   </div>
-  </div>
 
+    <div id="minimizedPage">
+      <div class="wrap">
+        <div class="content">
+          <div class="menu">
+            <div id="link-app">neckTech</div>
+            <div id="link-quit">
+              <span style="opacity: 0.5">&#8984;</span>Quit
+            </div>
+          </div>
+          <div class="main">
+            <div id="inactive">
+              <div id="start">End neckTech</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <div id="frontPage">
+      <div class="wrap">
+        <div class="content">
+          <div class="menu">
+            <div id="link-app">neckTech</div>
+            <div id="link-quit">
+              <span style="opacity: 0.5">&#8984;</span>Quit
+            </div>
+          </div>
+          <div class="main">
+            <div id="inactive">
+              <div id="start">Start using neckTech</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <div id="frontPage">
-    <div class="wrap">
+    <div id="exercisePage">
       <div class="content">
         <div class="menu">
           <div id="link-app">neckTech</div>
@@ -136,36 +168,23 @@
             <span style="opacity: 0.5">&#8984;</span>Quit
           </div>
         </div>
-        <div class="main">
-          <div id="inactive">
-            <div onclick="showCalibration()" id="start-techNeck">Start using neckTech</div>
-          </div>
+      </div>
+      <div class="sketch-center">
+        <div class="column2 left" id="sketch-holder">
+          <!-- Our sketch will go here! -->
         </div>
       </div>
     </div>
-  </div>
-
-  <div id="exercisePage">
-    <div class="content">
-      <div class="menu">
-        <div id="link-app">neckTech</div>
-        <div id="link-quit"><span style="opacity:0.5">&#8984;</span>Quit</div>
-      </div>
-    </div>
     <div class="sketch-center">
-      <div id="sketch-holder">
+      <div class="column2 left" id="sketch-holder">
         <!-- Our sketch will go here! -->
       </div>
     </div>
-      <p id="command" class="command">Please sit with a good posture when you click Start Calibration
-      </p>
-
+    <p id="command" class="command">Exercise Time!</p>
+    <div class="column2 right">
+      <p id="reps" class="timer">Count : 3 (Make Dynamic)</p>
+    </div>
   </div>
-  </div>
-  </div>
-
-  </div>
-
 
   <!-- You can also require other files to run in this process -->
   <script src="./renderer.js"></script>
@@ -184,6 +203,8 @@
       views.hideAllViews();
       views.showView("calibrationPage");
       views.hideCanvas();
+    };
+
     }
 
     $(" #slider1 ").change(() => {
@@ -239,9 +260,14 @@
     });
 
 
-
-  </script>
-
+  const showExercise = () => {
+      views.hideAllViews();
+      views.showView("exercisePage");
+      views.showCanvas();
+      posturenn.showExercise();
+    };
+    
+</script>
 </body>
 
 </html>
