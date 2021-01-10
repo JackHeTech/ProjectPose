@@ -59,7 +59,10 @@ class CheckInterval {
      * Function which is execute when the NN detects bad posture
      */
     displayBadPostureMessage(); // stub
-
+ 
 }
+
+
+
 
 // const checkInterval = new CheckInterval();

@@ -75,7 +75,7 @@
       <div class="row">
         <div class="column">
           <button class="button button1">Check System Requirements</button>
-          <button class="button button1">Calibrate Posture</button>
+          <button onclick="showCalibration()" class="button button1">Calibrate Posture</button>
         </div>
         <div class="column">
           <button class="button button2">Update Software</button>
@@ -157,6 +157,13 @@
       views.showView("calibrationPage");
       views.hideCanvas();
     });
+
+    const showCalibration = () => {
+      views = new ViewsService();
+      views.hideAllViews();
+      views.showView("calibrationPage");
+      views.hideCanvas();
+  }
   </script>
 
 </body>
