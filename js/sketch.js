@@ -1,5 +1,6 @@
 let video;
 let poseNet;
+let canvas;
 let poses = [];
 
 const nn = ml5.neuralNetwork({
@@ -75,7 +76,7 @@ function addPostureToData(poses, isGoodPosture) {
 }
 
 function setup() {
-  createCanvas(640, 480);
+  canvas = createCanvas(640, 480);
   video = createCapture(VIDEO);
   video.size(width, height);
 
@@ -88,6 +89,7 @@ function setup() {
   });
   // Hide the video element, and just show the canvas
   video.hide();
+  canvas.hide();
 }
 
 function modelReady() {
