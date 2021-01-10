@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <title>neckTech</title>
   <link rel="stylesheet" type="text/css" href="css/photon.min.css">
+  <link rel="stylesheet" type="text/css" href="css/custom.css">
   <script src="./js/p5.min.js"></script>
   <script src="./js/p5.dom.min.js"></script>
   <script src="./js/ml5.min.js"></script>
@@ -27,8 +28,37 @@
 
     <div id="homePage">
 
-
-      ...
+      <div class="wrap">
+        <div class="content">
+          <div class="menu">
+              <div id="link-app">neckTech</div>
+              <div id="link-quit"><span style="opacity:0.5">&#8984;</span>Quit</div>
+          </div>
+          <div class="main">
+            <div id="inactive">
+              <div id="start">Start</div>
+            </div>
+            <div id="active">
+              <div class="time-remaining-title">Next reminder in...</div>
+              <div id="time-remaining"></div>
+              <div id="stop">Stop</div>
+            </div>
+          </div>
+        </div>
+        <div class="footer">
+          <div class="setting">
+            <div class="interval-title">Interval</div>
+            <div class="interval">
+              <div>5m</div>
+              <div>15m</div>
+              <div>30m</div>
+              <div>1h</div>
+              <div>2h</div>
+            </div>
+            <input type="range" id="slider" min="1" max="5" step="1" />
+          </div>
+        </div>
+      </div>
 
       <footer class="toolbar toolbar-footer">
         <h1 class="title">Footer</h1>
