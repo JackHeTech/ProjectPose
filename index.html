@@ -54,7 +54,7 @@
               <div>5m</div>
               <div>10m</div>
             </div>
-            <input type="range" id="slider" min="1" max="5" step="1" />
+            <input type="range" id="slider1" min="1" max="5" step="1" />
           </div>
 
           <div class="setting">
@@ -66,7 +66,7 @@
               <div>1h</div>
               <div>2h</div>
             </div>
-            <input type="range" id="slider" min="1" max="5" step="1" />
+            <input type="range" id="slider2" min="1" max="5" step="1" />
           </div>
         </div>
 
@@ -133,12 +133,12 @@
       </div>
     </div>
 
-      <div id="sketch-holder">
-        <!-- Our sketch will go here! -->
-      </div>
-      <p id="command" class="command">Please sit with a good posture when you click Start Calibration
-      </p>
-  
+    <div id="sketch-holder">
+      <!-- Our sketch will go here! -->
+    </div>
+    <p id="command" class="command">Please sit with a good posture when you click Start Calibration
+    </p>
+
 
   </div>
   </div>
@@ -155,7 +155,7 @@
     $(() => {
       views = new ViewsService();
       views.hideAllViews();
-      views.showView("calibrationPage");
+      views.showView("homePage");
       views.hideCanvas();
     });
 
@@ -163,7 +163,63 @@
       views.hideAllViews();
       views.showView("calibrationPage");
       views.hideCanvas();
-  }
+    }
+
+    $(" #slider1 ").change(() => {
+      const val = $(" #slider1 ").val();
+      switch (val) {
+        case 1: // 5 seconds
+          exerciseInterval.setExerciseInterval(5 * 1000);
+          break;
+        case 2: // 30 seconds
+          exerciseInterval.setExerciseInterval(30 * 1000);
+          break;
+        case 3: // 1 min
+          exerciseInterval.setExerciseInterval(60 * 1000);
+          break;
+        case 4: // 5 mins
+          exerciseInterval.setExerciseInterval(5 * 60 * 1000);
+          break;
+        case 5: // 10 mins
+          exerciseInterval.setExerciseInterval(10 * 60 * 1000);
+          break;
+        default:
+          break;
+      }
+    }); 
+
+    $(" #slider2 ").change(() => {
+      const val = $(" #slider2 ").val();
+      switch (val) {
+        case 1: // 5 mins
+          checkInterval.setCheckInterval(5 * 1000);
+          break;
+        case 2: // 15 mins
+          checkInterval.setCheckInterval(30 * 1000);
+          break;
+        case 3: // 30 mins
+          checkInterval.setCheckInterval(60 * 1000);
+          break;
+        case 4: // 1 hr
+          checkInterval.setCheckInterval(5 * 60 * 1000);
+          break;
+        case 5: // 2 hrs
+          checkInterval.setCheckInterval(10 * 60 * 1000);
+          break;
+        default:
+          break;
+      }
+    });
+    
+    $(" #start ").click(() => {
+      $(" #start ").text("Watchin' you 👀");
+      global.checkInterval = new CheckInterval();
+      global.exerciseInterval = new ExerciseInterval();
+      remote.BrowserWindow.getFocusedWindow().minimize();
+    });
+
+
+
   </script>
 
 </body>
