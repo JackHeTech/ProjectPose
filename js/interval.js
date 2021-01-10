@@ -1,4 +1,6 @@
-
+/**
+ * @author its ya boi Devam Sisodraker
+ */
 class CheckInterval {
 
     /**
@@ -16,12 +18,20 @@ class CheckInterval {
     }
 
     /**
+     * Remove the check interval
+     */
+    clearCheckInterval() {
+        clearInterval(this.checkInterval);
+        this.checkInterval = null;
+    }
+
+    /**
      * Set the check interval
      * @param {number} value the check interval (in terms of ms)
      */
     setCheckInterval(value) {
         this.checkInterval = value;
-        clearInterval(this.checkInterval);
+        this.clearCheckInterval();
         this.checkInterval = setInterval(() => this.checkInterval(), this.checkInterval);
     }
 
