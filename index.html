@@ -24,7 +24,6 @@
     <button onclick="posturenn.trainModel()">Train</button>
     <button onclick="posturenn.saveData()">save Data</button>
     <button onclick="posturenn.loadData()">load Data</button>
-    <button onclick="posturenn.beginCalibration('result')">Calibrate</button>
     <h1>Result: <span class="" id="result"></span></h1>
     <div id="sketch-holder">
       <!-- Our sketch will go here! -->
@@ -113,12 +112,13 @@
       <div class="column2 left" id="sketch-holder">
         <!-- Our sketch will go here! -->
       </div>
-      <p class="command">Please maintain a good posture for 10 seconds (Need to make the command dynamic)</p>
+      <p id="command" class="command">Please sit with a good posture when you click Start Calibration
+      </p>
 
     </div>
     <div class="column2 right">
-      <p class="timer">3</p>
-      <button class="button button3">Start Calibration</button>
+      <p id="timer" class="timer">3</p>
+      <button onclick="posturenn.beginCalibration()" class=" button button3">Start Calibration</button>
       <button class="button button3">Restart Calibration</button>
     </div>
   </div>

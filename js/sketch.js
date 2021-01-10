@@ -79,7 +79,7 @@ class PostureNN {
 
   whileTraining(epoch, loss) {
     document.getElementById(
-      "result"
+      "command"
     ).innerHTML = `${epoch}/${this.totalEpoch}: loss: ${loss.loss}`;
   }
 
@@ -129,9 +129,9 @@ class PostureNN {
   gotResults(error, results) {
     console.log(error);
     //  Log output
-    document.getElementById("result").innerHTML = `${results[0].label} (${floor(
-      results[0].confidence * 100
-    )})%`;
+    document.getElementById("command").innerHTML = `${
+      results[0].label
+    } (${floor(results[0].confidence * 100)})%`;
     // Classify again
     this.classify();
   }
@@ -220,32 +220,64 @@ class PostureNN {
     document.getElementById(containerId).innerHTML = message;
   }
 
-  beginCalibration(containerId) {
-    const updateMessage = (message) => {
+  beginCalibration() {
+    const updateMessage = (container, message) => {
       return (seconds) => {
-        this.showMessage(containerId, `${message} ${seconds}`);
+        this.showMessage(container, `${message}${seconds}`);
       };
     };
 
-    new Countdown(
-      5,
-      2,
-      () => {
-        console.log("action");
-      },
-      updateMessage(`Beginning Calibration, please sit with a good posture in`),
-      () => {
-        new Countdown(
-          5,
-          3,
-          () => {
-            console.log("action");
-          },
-          updateMessage(`Move side to side with a good posture for`),
-          () => {}
-        );
-      }
-    );
+    new Countdown(3, null, null, updateMessage("timer", ``), () => {
+      new Countdown(
+        5,
+        null,
+        null,
+        updateMessage(
+          "command",
+          `Beginning Calibration, please sit with a good posture in `
+        ),
+        () => {
+          new Countdown(
+            5,
+            20,
+            () => {
+              this.goodPosture();
+            },
+            updateMessage(
+              "command",
+              `Move side to side with a good posture for `
+            ),
+            () => {
+              new Countdown(
+                5,
+                null,
+                null,
+                updateMessage(
+                  "command",
+                  `Get ready to sit with various bad postures (slouching, tech neck positions) in `
+                ),
+                () => {
+                  new Countdown(
+                    10,
+                    10,
+                    () => {
+                      this.badPosture();
+                    },
+                    updateMessage(
+                      "command",
+                      `Do varying positions of bad postures (slouching, tech neck positions) for `
+                    ),
+                    () => {
+                      this.trainModel();
+                    }
+                  );
+                }
+              );
+            }
+          );
+        }
+      );
+    });
   }
 }
 

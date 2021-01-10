@@ -13,9 +13,10 @@ class Countdown {
     updateCallback,
     finishedCallback
   ) {
-    this.checkInterval = setInterval(function () {
-      actionCallback();
-    }, 1000 / frequency);
+    if (frequency)
+      this.checkInterval = setInterval(function () {
+        actionCallback();
+      }, 1000 / frequency);
 
     this.timer = new easytimer.Timer();
     this.timer.start({ countdown: true, startValues: { seconds } });
