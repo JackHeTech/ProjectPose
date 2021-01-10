@@ -4,9 +4,9 @@
 class CheckInterval {
 
     /**
-     * Check every 1000ms by default
+     * Check every 1 min by default
      */
-    checkIntervalGap = 5000;
+    checkIntervalGap = 60 * 1000;
 
     /**
      * Actual reference to interval object
@@ -65,4 +65,49 @@ class CheckInterval {
 
 }
 
-const checkInterval = new CheckInterval();
+class ExerciseInterval {
+
+    /**
+     * Check every 30 mins by default
+     */
+    exerciseIntervalGap = 30 * 60 * 1000;
+
+    /**
+     * Actual reference to interval object
+     */
+    exerciseInterval;
+
+    constructor() {
+        this.exerciseInterval = window.setInterval(() => this.onExerciseInterval(), this.exerciseIntervalGap);
+    }
+
+    /**
+     * Remove the check interval
+     */
+    clearExerciseInterval() {
+        clearInterval(this.exerciseInterval);
+        this.exerciseInterval = null;
+    }
+
+    /**
+     * Set the exercise interval
+     * @param {number} value the check interval (in terms of ms)
+     */
+    setExerciseInterval(value) {
+        this.exerciseIntervalGap = value;
+        this.clearExerciseInterval();
+        this.exerciseInterval = window.setInterval(() => this.exerciseInterval(), this.exerciseIntervalGap);
+    }
+
+    /**
+     * Event run when the check interval must occur
+     */
+    onExerciseInterval() {
+        alert("Time to exercise!");
+        // TODO: insert exercise code here
+    }
+
+}
+
+let checkInterval = new CheckInterval();
+let exerciseInterval = new ExerciseInterval();
