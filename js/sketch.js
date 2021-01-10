@@ -202,18 +202,30 @@ class PostureNN {
     }
   }
 
-  /**
-   * Load data from given URL
-   */
-  loadData() {
-    this.nn.loadData("./data.json");
+  loadData(nn, name) {
+    nn.loadData(`/${name}/data.json`);
   }
-
-  /**
-   * Remove data from given url
-   */
-  saveData() {
-    this.nn.saveData("data");
+  
+  loadNNModel(nn, name) {
+    nn.load(
+      {
+        model: `/models/${name}/model.json`,
+        metadata: `/models/${name}/model_meta.json`,
+        weights: `/models/${name}/model.weights.bin`,
+      },
+      () => {
+        // done loading
+        console.log("done");
+      }
+    );
+  }
+  
+  saveData(nn) {
+    nn.saveData();
+  }
+  
+  saveNNModel(nn) {
+    nn.save(`data`);
   }
 
   showMessage(containerId, message) {
@@ -287,7 +299,17 @@ class PostureNN {
     views.hideAllViews();
     views.showView("homePage");
     views.hideCanvas();
-}
+  }
+
+  showExercise() {
+    this.beginSeatedTwists()
+  }
+
+  beginSeatedTwists() {
+    this.loadNNModel(this.nn, 'seatedtwist')
+    this.classify()
+  }
+
 }
 
 let posturenn;

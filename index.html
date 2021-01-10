@@ -79,7 +79,7 @@
           <button onclick="showCalibration()" class="button button1">Calibrate Posture</button>
         </div>
         <div class="column">
-          <button class="button button2">Update Software</button>
+          <button onclick="showExercise()" class="button button2">Update Software</button>
           <button class="button button2">Camera Settings</button>
           <button class="button button2">Other Settings</button>
           <button class="button button2">View Software License</button>
@@ -110,14 +110,14 @@
 
     <div class="row2">
 
-      <div class="column2 left" id="sketch-holder">
+      <div class="column2 right" id="sketch-holder">
         <!-- Our sketch will go here! -->
       </div>
       <p id="command" class="command">Please sit with a good posture when you click Start Calibration
       </p>
 
     </div>
-    <div class="column2 right">
+    <div class="column2 left">
       <p id="timer" class="timer">3</p>
       <button onclick="posturenn.beginCalibration()" class=" button button3">Start Calibration</button>
       <button class="button button3">Restart Calibration</button>
@@ -133,13 +133,13 @@
       </div>
     </div>
     <div class="sketch-center">
-      <div id="sketch-holder">
+      <div class="column2 left" id="sketch-holder">
         <!-- Our sketch will go here! -->
       </div>
     </div>
       <p id="command" class="command">Please sit with a good posture when you click Start Calibration
       </p>
-  
+      <div class="column2 right"><p id="reps" class="timer">Count : 3 (Make Dynamic)</p></div>
 
   </div>
   </div>
@@ -156,7 +156,7 @@
     $(() => {
       views = new ViewsService();
       views.hideAllViews();
-      views.showView("exercisePage");
+      views.showView("calibrationPage");
       views.showCanvas();
     });
 
@@ -164,6 +164,13 @@
       views.hideAllViews();
       views.showView("calibrationPage");
       views.hideCanvas();
+  }
+
+  const showExercise = () => {
+      views.hideAllViews();
+      views.showView("exercisePage");
+      views.showCanvas();
+      posturenn.showExercise();
   }
   </script>
 
