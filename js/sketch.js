@@ -89,7 +89,7 @@ class PostureNN {
    */
   finishedTraining() {
     console.log("done");
-    this.classify();
+    //this.classify();
   }
 
   /**
@@ -270,6 +270,7 @@ class PostureNN {
                     ),
                     () => {
                       this.trainModel();
+                      this.showHomePage();
                     }
                   );
                 }
@@ -280,6 +281,13 @@ class PostureNN {
       );
     });
   }
+
+  showHomePage() {
+    views = new ViewsService();
+    views.hideAllViews();
+    views.showView("homePage");
+    views.hideCanvas();
+}
 }
 
 let posturenn;
