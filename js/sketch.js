@@ -1,5 +1,4 @@
 class PostureNN {
-
   video;
   poseNet;
   canvas;
@@ -39,8 +38,8 @@ class PostureNN {
 
   /**
    * Add data to the NN training set
-   * @param {Array<object>} poses pose to be added to the dataset 
-   * @param {boolean} isGoodPosture whether the posture was good 
+   * @param {Array<object>} poses pose to be added to the dataset
+   * @param {boolean} isGoodPosture whether the posture was good
    */
   addPostureToData(poses, isGoodPosture) {
     if (!poses) return;
@@ -103,12 +102,14 @@ class PostureNN {
   }
 
   /**
-   * Classify the given inputs and 
+   * Classify the given inputs and
    */
   classify() {
     if (this.poses.length > 0) {
       let inputs = this.getInputs();
-      this.nn.classify(inputs, this.gotResults);
+      this.nn.classify(inputs, (err, res) => {
+        this.gotResults(err, res);
+      });
     }
   }
 
@@ -117,7 +118,7 @@ class PostureNN {
    * Logs the output of confidence to the GUI
    */
   gotResults(error, results) {
-    console.log(error)
+    console.log(error);
     //  Log output
     document.getElementById("result").innerHTML = `${results[0].label} (${floor(
       results[0].confidence * 100
@@ -145,16 +146,16 @@ class PostureNN {
    * ???
    * Draws onto the canvas
    */
-  draw(self) {
-    self.image(this.video, 0, 0, width, height);
+  draw() {
+    image(this.video, 0, 0, width, height);
 
     // We can call both s to draw all keypoints and the skeletons
-    this.drawKeypoints(self);
-    this.drawSkeleton(self);
+    this.drawKeypoints();
+    this.drawSkeleton();
   }
 
   // A  to draw ellipses over the detected keypoints
-  drawKeypoints(self) {
+  drawKeypoints() {
     // Loop through all the poses detected
     for (let i = 0; i < this.poses.length; i++) {
       // For each pose detected, loop through all the keypoints
@@ -164,16 +165,16 @@ class PostureNN {
         let keypoint = pose.keypoints[j];
         // Only draw an ellipse is the pose probability is bigger than 0.2
         if (keypoint.score > 0.2) {
-          self.fill(255, 0, 0);
-          self.noStroke();
-          self.ellipse(keypoint.position.x, keypoint.position.y, 10, 10);
+          fill(255, 0, 0);
+          noStroke();
+          ellipse(keypoint.position.x, keypoint.position.y, 10, 10);
         }
       }
     }
   }
 
   // A  to draw the skeletons
-  drawSkeleton(self) {
+  drawSkeleton() {
     // Loop through all the skeletons detected
     for (let i = 0; i < this.poses.length; i++) {
       let skeleton = this.poses[i].skeleton;
@@ -181,8 +182,8 @@ class PostureNN {
       for (let j = 0; j < skeleton.length; j++) {
         let partA = skeleton[j][0];
         let partB = skeleton[j][1];
-        self.stroke(255, 0, 0);
-        self.line(
+        stroke(255, 0, 0);
+        line(
           partA.position.x,
           partA.position.y,
           partB.position.x,
@@ -191,7 +192,6 @@ class PostureNN {
       }
     }
   }
-
 
   /**
    * Load data from given URL
@@ -206,8 +206,6 @@ class PostureNN {
   saveData() {
     this.nn.saveData("data");
   }
-
-
 }
 
 let posturenn;
@@ -217,5 +215,5 @@ function setup() {
 }
 
 function draw() {
-  posturenn.draw(this);
+  posturenn.draw();
 }
