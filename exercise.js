@@ -8,41 +8,30 @@ const nn = ml5.neuralNetwork({
 });
 
 function loadData(name) {
-  nn.loadData(`${name}_data.json`);
+  nn.loadData(`/${name}/data.json`);
 }
 
 function loadNNModel(name) {
-  console.log({
-    model: `${name}.json`,
-    metadata: `${name}_meta.json`,
-    weights: `${name}.weights.bin`,
-  });
-  nn.load(`/${name}.json`, () => {
-    // done loading
-    console.log("done");
-    classify();
-  });
+  nn.load(
+    {
+      model: `/${name}/model.json`,
+      metadata: `/${name}/model_meta.json`,
+      weights: `/${name}/model.weights.bin`,
+    },
+    () => {
+      // done loading
+      console.log("done");
+      classify();
+    }
+  );
 }
 
-<<<<<<< Updated upstream:exercise.js
 function saveData(name) {
-  nn.saveData(`${name}_data`);
-=======
-function loadData() {
-  // nn.loadData("./data.json");
-  data.data.forEach((item) => {
-    nn.addData(
-      Object.keys(item.xs)
-        .map((key) => item.xs[key])
-        .slice(0, 12),
-      item.ys
-    );
-  });
->>>>>>> Stashed changes:js/sketch.js
+  nn.saveData();
 }
 
 function saveNNModel(name) {
-  nn.save(`${name}`);
+  nn.save(`data`);
 }
 
 // Train the model
