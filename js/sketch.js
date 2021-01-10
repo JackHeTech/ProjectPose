@@ -98,7 +98,7 @@ class PostureNN {
   classifyRightNow() {
     return new Promise((resolve, reject) => {
       if (this.poses.length > 0) {
-        let inputs = getInputs();
+        let inputs = this.getInputs();
         this.nn.classify(inputs, (error, results) => {
           if (error != undefined) {
             reject(error);
