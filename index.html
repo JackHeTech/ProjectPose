@@ -118,6 +118,42 @@
       </div>
     </div>
 
+    <div id="minimizedPage">
+      <div class="wrap">
+        <div class="content">
+          <div class="menu">
+            <div id="link-app">neckTech</div>
+            <div id="link-quit">
+              <span style="opacity: 0.5">&#8984;</span>Quit
+            </div>
+          </div>
+          <div class="main">
+            <div id="inactive">
+              <div id="start">End neckTech</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="frontPage">
+      <div class="wrap">
+        <div class="content">
+          <div class="menu">
+            <div id="link-app">neckTech</div>
+            <div id="link-quit">
+              <span style="opacity: 0.5">&#8984;</span>Quit
+            </div>
+          </div>
+          <div class="main">
+            <div id="inactive">
+              <div id="start">Start using neckTech</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div id="exercisePage">
       <div class="content">
         <div class="menu">
@@ -146,8 +182,8 @@
       $(() => {
         views = new ViewsService();
         views.hideAllViews();
-        views.showView("calibrationPage");
-        views.showCanvas();
+        views.showView("minimizedPage");
+        views.hideCanvas();
       });
 
       const showCalibration = () => {
