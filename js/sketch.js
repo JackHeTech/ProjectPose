@@ -4,11 +4,12 @@ class PostureNN {
   canvas;
   poses = [];
   nn;
+  totalEpoch = 50;
 
   constructor(createCanvas, createCapture) {
     this.nn = window.ml5.neuralNetwork({
       task: "classification",
-      debug: true,
+      // debug: true,
     });
 
     this.canvas = createCanvas(640, 480);
@@ -69,10 +70,18 @@ class PostureNN {
     this.nn.normalizeData();
     this.nn.train(
       {
-        epochs: 25,
+        epochs: this.totalEpoch,
       },
+      (epoch, loss) => this.whileTraining(epoch, loss),
       () => this.finishedTraining()
     );
+  }
+
+  whileTraining(epoch, loss) {
+    document.getElementById(
+      "result"
+    ).innerHTML = `${epoch}/${this.totalEpoch}: loss: ${loss.loss}`;
+    console.log(`${epoch}/${this.totalEpoch}: loss: ${loss.loss}`);
   }
 
   /**
@@ -80,6 +89,7 @@ class PostureNN {
    * Executed when the training of the model is complete
    */
   finishedTraining() {
+    console.log("done");
     this.classify();
   }
 

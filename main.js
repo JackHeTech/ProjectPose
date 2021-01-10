@@ -7,12 +7,12 @@ function createWindow() {
   const mainWindow = new BrowserWindow({
     width: 900,
     height: 700,
-    'min-width': 500,
-    'min-height': 200,
-    'accept-first-mouse': true,
-    'title-bar-style': 'hidden',
-    frame: false,
-    resizable: false,
+    "min-width": 500,
+    "min-height": 200,
+    "accept-first-mouse": true,
+    "title-bar-style": "hidden",
+    // frame: false,
+    // resizable: false,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
     },
