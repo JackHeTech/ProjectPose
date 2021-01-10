@@ -11,7 +11,8 @@ class ViewsService {
             $(" #testPage "),
             $(" #homePage "),
             $(" #calibrationPage "),
-            $(" #exercisePage ")
+            $(" #exercisePage "),
+            $(" #frontPage ")
         ];
     }
 

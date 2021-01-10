@@ -82,7 +82,7 @@
           <button class="button button2">Update Software</button>
           <button class="button button2">Camera Settings</button>
           <button class="button button2">Other Settings</button>
-          <button class="button button2">View Software License</button>
+          <button class="button button2">View License</button>
         </div>
       </div>
 
@@ -125,6 +125,26 @@
   </div>
   </div>
 
+
+
+  <div id="frontPage">
+    <div class="wrap">
+      <div class="content">
+        <div class="menu">
+          <div id="link-app">neckTech</div>
+          <div id="link-quit">
+            <span style="opacity: 0.5">&#8984;</span>Quit
+          </div>
+        </div>
+        <div class="main">
+          <div id="inactive">
+            <div onclick="showCalibration()" id="start-techNeck">Start using neckTech</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div id="exercisePage">
     <div class="content">
       <div class="menu">
@@ -158,6 +178,7 @@
       views.showView("homePage");
       views.hideCanvas();
     });
+
 
     const showCalibration = () => {
       views.hideAllViews();
@@ -213,9 +234,8 @@
     
     $(" #start ").click(() => {
       $(" #start ").text("Watchin' you 👀");
-      global.checkInterval = new CheckInterval();
-      global.exerciseInterval = new ExerciseInterval();
-      remote.BrowserWindow.getFocusedWindow().minimize();
+      if (global.checkInterval == undefined) global.checkInterval = new CheckInterval();
+      if (global.exerciseInterval == undefined) global.exerciseInterval = new ExerciseInterval();
     });
 
 
