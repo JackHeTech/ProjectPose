@@ -125,7 +125,22 @@
   </div>
 
   <div id="exercisePage">
+    <div class="content">
+      <div class="menu">
+        <div id="link-app">neckTech</div>
+        <div id="link-quit"><span style="opacity:0.5">&#8984;</span>Quit</div>
+      </div>
+    </div>
 
+      <div id="sketch-holder">
+        <!-- Our sketch will go here! -->
+      </div>
+      <p id="command" class="command">Please sit with a good posture when you click Start Calibration
+      </p>
+  
+
+  </div>
+  </div>
   </div>
 
   </div>
@@ -140,7 +155,7 @@
       views = new ViewsService();
       views.hideAllViews();
       views.showView("calibrationPage");
-      views.showCanvas();
+      views.hideCanvas();
     });
   </script>
 

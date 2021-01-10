@@ -221,6 +221,7 @@ class PostureNN {
   }
 
   beginCalibration() {
+    views.showCanvas();
     const updateMessage = (container, message) => {
       return (seconds) => {
         this.showMessage(container, `${message}${seconds}`);
