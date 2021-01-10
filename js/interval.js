@@ -59,16 +59,6 @@ class CheckInterval {
     /**
      * Function which is execute when the NN detects bad posture
      */
-<<<<<<< HEAD
-    displayBadPostureMessage(); // stub
- 
-}
-
-
-
-
-// const checkInterval = new CheckInterval();
-=======
     displayBadPostureMessage() {
         alert("Correct your posture! Sit up straight!");
     }
@@ -76,4 +66,3 @@ class CheckInterval {
 }
 
 const checkInterval = new CheckInterval();
->>>>>>> 254f5962bf9c4f1b5395ff8674245db68e74b2c0

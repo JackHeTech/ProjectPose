@@ -155,12 +155,11 @@
     $(() => {
       views = new ViewsService();
       views.hideAllViews();
-      views.showView("testPage");
-      views.showCanvas();
+      views.showView("calibrationPage");
+      views.hideCanvas();
     });
 
     const showCalibration = () => {
-      views = new ViewsService();
       views.hideAllViews();
       views.showView("calibrationPage");
       views.hideCanvas();
