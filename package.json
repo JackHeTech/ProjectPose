@@ -18,5 +18,15 @@
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^11.1.1"
+  },
+  "build": {
+    "appId": "io.github.TheD3vel0per.ProjectPose",
+    "productName": "neckTech",
+    "copyright": "Copyright (C) 2021 neckTech Team",
+    "mac": {},
+    "win": {},
+    "files": [
+      "./**/*"
+    ]
   }
 }
