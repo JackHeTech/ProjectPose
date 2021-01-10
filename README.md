@@ -11,12 +11,12 @@ hilarious image!
  - [Devam Sisodraker](https://github.com/TheD3vel0per)
  - [Vishal Desh](https://github.com/VDeshh)
  - [Liang Liu](https://github.com/stuffbyliang)
-
+ - [Jack He](https://github.com/ProjectsByJackHe)
 
 ## License
 
 ```
-Copyright (C) 2021 Devam Sisodraker, Vishal Desh, Liang Liu
+Copyright (C) 2021 Devam Sisodraker, Vishal Desh, Liang Liu, Jack He
 
 This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of theMPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
 ```

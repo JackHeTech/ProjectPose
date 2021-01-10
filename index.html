@@ -194,7 +194,7 @@
     $(() => {
       views = new ViewsService();
       views.hideAllViews();
-      views.showView("calibrationPage");
+      views.showView("frontPage");
       views.hideCanvas();
     });
 
@@ -204,8 +204,6 @@
       views.showView("calibrationPage");
       views.hideCanvas();
     };
-
-    }
 
     $(" #slider1 ").change(() => {
       const val = $(" #slider1 ").val();
