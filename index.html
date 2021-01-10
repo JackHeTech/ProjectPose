@@ -36,18 +36,24 @@
           </div>
           <div class="main">
             <div id="inactive">
-              <div id="start">Start</div>
+              <div id="start">Run</div>
             </div>
-            <div id="active">
-              <div class="time-remaining-title">Next reminder in...</div>
-              <div id="time-remaining"></div>
-              <div id="stop">Stop</div>
-            </div>
-          </div>
         </div>
         <div class="footer">
           <div class="setting">
-            <div class="interval-title">Interval</div>
+            <div class="interval-title">Scan Interval</div>
+            <div class="interval">
+              <div>5m</div>
+              <div>15m</div>
+              <div>30m</div>
+              <div>1h</div>
+              <div>2h</div>
+            </div>
+            <input type="range" id="slider" min="1" max="5" step="1" />
+          </div>
+
+          <div class="setting">
+            <div class="interval-title">Exercise Interval</div>
             <div class="interval">
               <div>5m</div>
               <div>15m</div>
@@ -58,11 +64,24 @@
             <input type="range" id="slider" min="1" max="5" step="1" />
           </div>
         </div>
+        
       </div>
+            
 
-      <footer class="toolbar toolbar-footer">
-        <h1 class="title">Footer</h1>
-      </footer>
+      <div class="row">
+        <div class="column">
+          <button class="button button1">Check System Requirements</button>
+          <button class="button button1">Calibrate Posture</button>
+        </div>
+        <div class="column" >
+          <button class="button button1">Update Software</button>
+          <button class="button button1">Camera Settings</button>
+          <button class="button button1">Other Settings</button>
+          <button class="button button1">View Software License</button>
+        </div>
+      </div>
+    
+
     </div>
 
     <div id="calibrationPage">
