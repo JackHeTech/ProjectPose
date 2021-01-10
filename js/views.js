@@ -4,8 +4,8 @@ $(() => {
     let calibrationPage = $("#calibrationPage");
     let exercisePage =  $("#exercisePage");
 
-    testPage.hide();
-    homePage.show();
+    testPage.show();
+    homePage.hide();
     calibrationPage.hide();
     exercisePage.hide();
 });
