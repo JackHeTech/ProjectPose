@@ -81,7 +81,6 @@ class PostureNN {
     document.getElementById(
       "result"
     ).innerHTML = `${epoch}/${this.totalEpoch}: loss: ${loss.loss}`;
-    console.log(`${epoch}/${this.totalEpoch}: loss: ${loss.loss}`);
   }
 
   /**
@@ -215,6 +214,38 @@ class PostureNN {
    */
   saveData() {
     this.nn.saveData("data");
+  }
+
+  showMessage(containerId, message) {
+    document.getElementById(containerId).innerHTML = message;
+  }
+
+  beginCalibration(containerId) {
+    const updateMessage = (message) => {
+      return (seconds) => {
+        this.showMessage(containerId, `${message} ${seconds}`);
+      };
+    };
+
+    new Countdown(
+      5,
+      2,
+      () => {
+        console.log("action");
+      },
+      updateMessage(`Beginning Calibration, please sit with a good posture in`),
+      () => {
+        new Countdown(
+          5,
+          3,
+          () => {
+            console.log("action");
+          },
+          updateMessage(`Move side to side with a good posture for`),
+          () => {}
+        );
+      }
+    );
   }
 }
 

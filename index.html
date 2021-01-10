@@ -10,6 +10,8 @@
   <script src="./js/p5.dom.min.js"></script>
   <script src="./js/ml5.min.js"></script>
   <script src="./js/sketch.js"></script>
+  <script src="./js/easytimer.min.js"></script>
+  <script src="./js/countdown.js"></script>
   <script src="./js/jquery.min.js"></script>
 </head>
 
@@ -21,6 +23,7 @@
     <button onclick="posturenn.trainModel()">Train</button>
     <button onclick="posturenn.saveData()">save Data</button>
     <button onclick="posturenn.loadData()">load Data</button>
+    <button onclick="posturenn.beginCalibration('result')">Calibrate</button>
     <h1>Result: <span class="" id="result"></span></h1>
     <div id="sketch-holder">
       <!-- Our sketch will go here! -->
@@ -29,16 +32,16 @@
 
   <div id="homePage">
 
-      <div class="wrap">
-        <div class="content">
-          <div class="menu">
-              <div id="link-app">neckTech</div>
-              <div id="link-quit"><span style="opacity:0.5">&#8984;</span>Quit</div>
+    <div class="wrap">
+      <div class="content">
+        <div class="menu">
+          <div id="link-app">neckTech</div>
+          <div id="link-quit"><span style="opacity:0.5">&#8984;</span>Quit</div>
+        </div>
+        <div class="main">
+          <div id="inactive">
+            <div id="start">Run</div>
           </div>
-          <div class="main">
-            <div id="inactive">
-              <div id="start">Run</div>
-            </div>
         </div>
         <div class="footer">
           <div class="setting">
@@ -65,37 +68,37 @@
             <input type="range" id="slider" min="1" max="5" step="1" />
           </div>
         </div>
-        
+
       </div>
-            
+
 
       <div class="row">
         <div class="column">
           <button class="button button1">Check System Requirements</button>
           <button class="button button1">Calibrate Posture</button>
         </div>
-        <div class="column" >
+        <div class="column">
           <button class="button button2">Update Software</button>
           <button class="button button2">Camera Settings</button>
           <button class="button button2">Other Settings</button>
           <button class="button button2">View Software License</button>
         </div>
       </div>
-    
+
 
     </div>
 
-  <div id="calibrationPage">
+    <div id="calibrationPage">
+
+    </div>
+
+    <div id="exercisePage">
+
+    </div>
 
   </div>
 
-  <div id="exercisePage">
 
-  </div>
-
-  </div>
-
- 
   <!-- You can also require other files to run in this process -->
   <script src="./renderer.js"></script>
   <script src="./js/views.js"></script>
