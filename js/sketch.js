@@ -5,9 +5,15 @@ class PostureNN {
   poses = [];
   nn;
   totalEpoch = 50;
+  exerciseNN;
 
   constructor(createCanvas, createCapture) {
     this.nn = window.ml5.neuralNetwork({
+      task: "classification",
+      // debug: true,
+    });
+
+    this.exerciseNN = window.ml5.neuralNetwork({
       task: "classification",
       // debug: true,
     });
@@ -42,10 +48,10 @@ class PostureNN {
    * @param {Array<object>} poses pose to be added to the dataset
    * @param {boolean} isGoodPosture whether the posture was good
    */
-  addPostureToData(poses, isGoodPosture) {
-    if (!poses) return;
+  addPostureToData(posture) {
+    if (!this.poses) return;
     this.nn.addData(this.getInputs(), {
-      isGoodPosture: isGoodPosture ? "GOOD" : "BAD",
+      posture,
     });
   }
 
@@ -53,14 +59,14 @@ class PostureNN {
    * Add the current posture to the data set as good
    */
   goodPosture() {
-    this.addPostureToData(this.poses, 1);
+    this.addPostureToData(this.poses, "GOOD");
   }
 
   /**
    * Add the current posture to the data set as bad
    */
   badPosture() {
-    this.addPostureToData(this.poses, 0);
+    this.addPostureToData(this.poses, "BAD");
   }
 
   /**
@@ -113,11 +119,11 @@ class PostureNN {
   /**
    * Classify the given inputs and
    */
-  classify() {
+  classify(nn, containerId) {
     if (this.poses.length > 0) {
       let inputs = this.getInputs();
-      this.nn.classify(inputs, (err, res) => {
-        this.gotResults(err, res);
+      nn.classify(inputs, (err, res) => {
+        this.gotResults(err, res, nn, containerId);
       });
     }
   }
@@ -126,14 +132,15 @@ class PostureNN {
    * EVENT: Triggered after the NN classifies something
    * Logs the output of confidence to the GUI
    */
-  gotResults(error, results) {
-    console.log(error);
+  gotResults(error, results, nn, containerId) {
+    if (error) console.log(error);
+    console.log(results);
     //  Log output
-    document.getElementById("command").innerHTML = `${
+    document.getElementById(containerId).innerHTML = `${
       results[0].label
     } (${floor(results[0].confidence * 100)})%`;
     // Classify again
-    this.classify();
+    this.classify(nn, containerId);
   }
 
   /**
@@ -203,29 +210,40 @@ class PostureNN {
   }
 
   loadData(nn, name) {
-    nn.loadData(`/${name}/data.json`);
+    nn.loadData(`${name}/data.json`);
   }
-  
-  loadNNModel(nn, name) {
+
+  loadNNModel(nn, name, callback) {
     nn.load(
       {
-        model: `/models/${name}/model.json`,
-        metadata: `/models/${name}/model_meta.json`,
-        weights: `/models/${name}/model.weights.bin`,
+        model: `models/${name}/model.json`,
+        metadata: `models/${name}/model_meta.json`,
+        weights: `models/${name}/model.weights.bin`,
       },
       () => {
         // done loading
-        console.log("done");
+        console.log("done loading");
+        if (callback) callback();
       }
     );
   }
-  
+
   saveData(nn) {
-    nn.saveData();
+    nn.saveData(`data`);
   }
-  
+
   saveNNModel(nn) {
-    nn.save(`data`);
+    nn.save();
+  }
+
+  saveExerciseModel() {
+    this.saveNNModel(this.nn);
+  }
+
+  loadExerciseModel(name) {
+    this.loadNNModel(this.nn, name, () => {
+      this.classify(this.nn, "result");
+    });
   }
 
   showMessage(containerId, message) {
@@ -302,14 +320,27 @@ class PostureNN {
   }
 
   showExercise() {
-    this.beginSeatedTwists()
+    this.beginSeatedTwists();
   }
 
-  beginSeatedTwists() {
-    this.loadNNModel(this.nn, 'seatedtwist')
-    this.classify()
+  async sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
+  async waitForPose() {
+    while (this.poses.length == 0) {
+      await this.sleep(1000);
+    }
+    return;
+  }
+
+  async beginSeatedTwists() {
+    await this.waitForPose();
+    console.log(this.poses);
+    this.loadNNModel(this.exerciseNN, "seatedtwist", () => {
+      this.classify(this.exerciseNN, "reps");
+    });
+  }
 }
 
 let posturenn;
