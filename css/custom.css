@@ -294,3 +294,9 @@ input[type="range"]::-webkit-slider-thumb:hover {
   border: 2px solid rgba(136, 255, 0, 0.945);
   color: rgba(136, 255, 0, 0.945);
 }
+
+.sketch-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
