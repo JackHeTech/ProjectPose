@@ -4,9 +4,6 @@
 ## About This Project
 neckTech is a hackathon project that we created for nwHacks 2021.
 
-Draw a quadrant of a drawing and align with others to create a 
-hilarious image!
-
 ## Authors
  - [Devam Sisodraker](https://github.com/TheD3vel0per)
  - [Vishal Desh](https://github.com/VDeshh)
