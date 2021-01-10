@@ -21,7 +21,7 @@ class CheckInterval {
      * Remove the check interval
      */
     clearCheckInterval() {
-        clearInterval(this.checkInterval);
+        window.clearInterval(this.checkInterval);
         this.checkInterval = null;
     }
 
@@ -85,7 +85,7 @@ class ExerciseInterval {
      * Remove the check interval
      */
     clearExerciseInterval() {
-        clearInterval(this.exerciseInterval);
+        window.clearInterval(this.exerciseInterval);
         this.exerciseInterval = null;
     }
 
