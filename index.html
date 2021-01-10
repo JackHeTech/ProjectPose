@@ -10,8 +10,11 @@
   <script src="./js/p5.dom.min.js"></script>
   <script src="./js/ml5.min.js"></script>
   <script src="./js/sketch.js"></script>
+  <script src="./js/easytimer.min.js"></script>
+  <script src="./js/countdown.js"></script>
   <script src="./js/jquery.min.js"></script>
   <script src="./js/views.js"></script>
+  <script src="./js/interval.js"></script>
 </head>
 
 <body>
@@ -97,49 +100,65 @@
             <div id="link-quit"><span style="opacity:0.5">&#8984;</span>Quit</div>
         </div> -->
 
-    
-          <div class="content">
-            <div class="menu">
-              <div id="link-app">neckTech</div>
-              <div id="link-quit"><span style="opacity:0.5">&#8984;</span>Quit</div>
-            </div>
-          </div>
-        
-    <div class="row2">
 
-        <div class="column2 left" id="sketch-holder">
-          <!-- Our sketch will go here! -->
-        </div>
-        <p class="command">Please maintain a good posture for 10 seconds (Need to make the command dynamic)</p>
-
-      </div>
-      <div class="column2 right">
-        <p class="timer">3</p>
-        <button class="button button3">Start Calibration</button>
-        <button class="button button3">Restart Calibration</button>
+    <div class="content">
+      <div class="menu">
+        <div id="link-app">neckTech</div>
+        <div id="link-quit"><span style="opacity:0.5">&#8984;</span>Quit</div>
       </div>
     </div>
+
+    <div class="row2">
+
+      <div class="column2 left" id="sketch-holder">
+        <!-- Our sketch will go here! -->
+      </div>
+      <p id="command" class="command">Please sit with a good posture when you click Start Calibration
+      </p>
+
+    </div>
+    <div class="column2 right">
+      <p id="timer" class="timer">3</p>
+      <button onclick="posturenn.beginCalibration()" class=" button button3">Start Calibration</button>
+      <button class="button button3">Restart Calibration</button>
+    </div>
+  </div>
   </div>
 
   <div id="exercisePage">
+    <div class="content">
+      <div class="menu">
+        <div id="link-app">neckTech</div>
+        <div id="link-quit"><span style="opacity:0.5">&#8984;</span>Quit</div>
+      </div>
+    </div>
 
+      <div id="sketch-holder">
+        <!-- Our sketch will go here! -->
+      </div>
+      <p id="command" class="command">Please sit with a good posture when you click Start Calibration
+      </p>
+  
+
+  </div>
+  </div>
   </div>
 
   </div>
 
 
-<!-- You can also require other files to run in this process -->
-<script src="./renderer.js"></script>
-<script>
-  let views;
+  <!-- You can also require other files to run in this process -->
+  <script src="./renderer.js"></script>
+  <script>
+    let views;
 
-  $(() => {
-    views = new ViewsService();
-    views.hideAllViews();
-    views.showView("calibrationPage");
-    views.showCanvas();
-  });
-</script>
+    $(() => {
+      views = new ViewsService();
+      views.hideAllViews();
+      views.showView("testPage");
+      views.showCanvas();
+    });
+  </script>
 
 </body>
 

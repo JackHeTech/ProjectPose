@@ -4,11 +4,12 @@ class PostureNN {
   canvas;
   poses = [];
   nn;
+  totalEpoch = 50;
 
   constructor(createCanvas, createCapture) {
     this.nn = window.ml5.neuralNetwork({
       task: "classification",
-      debug: true,
+      // debug: true,
     });
 
     this.canvas = createCanvas(640, 480);
@@ -69,10 +70,17 @@ class PostureNN {
     this.nn.normalizeData();
     this.nn.train(
       {
-        epochs: 25,
+        epochs: this.totalEpoch,
       },
+      (epoch, loss) => this.whileTraining(epoch, loss),
       () => this.finishedTraining()
     );
+  }
+
+  whileTraining(epoch, loss) {
+    document.getElementById(
+      "command"
+    ).innerHTML = `${epoch}/${this.totalEpoch}: loss: ${loss.loss}`;
   }
 
   /**
@@ -80,6 +88,7 @@ class PostureNN {
    * Executed when the training of the model is complete
    */
   finishedTraining() {
+    console.log("done");
     this.classify();
   }
 
@@ -89,7 +98,7 @@ class PostureNN {
   classifyRightNow() {
     return new Promise((resolve, reject) => {
       if (this.poses.length > 0) {
-        let inputs = getInputs();
+        let inputs = this.getInputs();
         this.nn.classify(inputs, (error, results) => {
           if (error != undefined) {
             reject(error);
@@ -120,9 +129,9 @@ class PostureNN {
   gotResults(error, results) {
     console.log(error);
     //  Log output
-    document.getElementById("result").innerHTML = `${results[0].label} (${floor(
-      results[0].confidence * 100
-    )})%`;
+    document.getElementById("command").innerHTML = `${
+      results[0].label
+    } (${floor(results[0].confidence * 100)})%`;
     // Classify again
     this.classify();
   }
@@ -205,6 +214,71 @@ class PostureNN {
    */
   saveData() {
     this.nn.saveData("data");
+  }
+
+  showMessage(containerId, message) {
+    document.getElementById(containerId).innerHTML = message;
+  }
+
+  beginCalibration() {
+    views.showCanvas();
+    const updateMessage = (container, message) => {
+      return (seconds) => {
+        this.showMessage(container, `${message}${seconds}`);
+      };
+    };
+
+    new Countdown(3, null, null, updateMessage("timer", ``), () => {
+      new Countdown(
+        5,
+        null,
+        null,
+        updateMessage(
+          "command",
+          `Beginning Calibration, please sit with a good posture in `
+        ),
+        () => {
+          new Countdown(
+            5,
+            20,
+            () => {
+              this.goodPosture();
+            },
+            updateMessage(
+              "command",
+              `Move side to side with a good posture for `
+            ),
+            () => {
+              new Countdown(
+                5,
+                null,
+                null,
+                updateMessage(
+                  "command",
+                  `Get ready to sit with various bad postures (slouching, tech neck positions) in `
+                ),
+                () => {
+                  new Countdown(
+                    10,
+                    10,
+                    () => {
+                      this.badPosture();
+                    },
+                    updateMessage(
+                      "command",
+                      `Do varying positions of bad postures (slouching, tech neck positions) for `
+                    ),
+                    () => {
+                      this.trainModel();
+                    }
+                  );
+                }
+              );
+            }
+          );
+        }
+      );
+    });
   }
 }
 

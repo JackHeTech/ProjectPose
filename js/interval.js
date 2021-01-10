@@ -6,7 +6,7 @@ class CheckInterval {
     /**
      * Check every 1000ms by default
      */
-    checkIntervalGap = 1000;
+    checkIntervalGap = 5000;
 
     /**
      * Actual reference to interval object
@@ -14,7 +14,7 @@ class CheckInterval {
     checkInterval;
 
     constructor() {
-        checkInterval = setInterval(() => this.onCheckInterval(), this.checkIntervalGap);
+        this.checkInterval = window.setInterval(() => this.onCheckInterval(), this.checkIntervalGap);
     }
 
     /**
@@ -30,9 +30,9 @@ class CheckInterval {
      * @param {number} value the check interval (in terms of ms)
      */
     setCheckInterval(value) {
-        this.checkInterval = value;
+        this.checkIntervalGap = value;
         this.clearCheckInterval();
-        this.checkInterval = setInterval(() => this.checkInterval(), this.checkInterval);
+        this.checkInterval = window.setInterval(() => this.checkInterval(), this.checkIntervalGap);
     }
 
     /**
@@ -48,18 +48,21 @@ class CheckInterval {
     isGoodPosition() {
         posturenn.classifyRightNow()
             .then((result) => {
+                console.log(result);
                 if (result == "BAD") {
                     this.displayBadPostureMessage();
                 }
             })
-            .catch((error) => {});
+            .catch(console.error);
     }
 
     /**
      * Function which is execute when the NN detects bad posture
      */
-    displayBadPostureMessage(); // stub
+    displayBadPostureMessage() {
+        alert("Correct your posture! Sit up straight!");
+    }
 
 }
 
-// const checkInterval = new CheckInterval();
+const checkInterval = new CheckInterval();
