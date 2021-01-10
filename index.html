@@ -3,23 +3,102 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Hello World!</title>
+  <title>neckTech</title>
+  <link rel="stylesheet" type="text/css" href="css/photon.min.css">
+  <link rel="stylesheet" type="text/css" href="css/custom.css">
   <script src="./js/p5.min.js"></script>
   <script src="./js/p5.dom.min.js"></script>
   <script src="./js/ml5.min.js"></script>
   <script src="./js/sketch.js"></script>
+  <script src="./js/jquery.min.js"></script>
 </head>
 
 <body>
-  <button onclick="goodPosture()">Good Posture</button>
-  <button onclick="badPosture()">Bad Posture</button>
-  <button onclick="trainModel()">Train</button>
-  <button onclick="saveData()">save Data</button>
-  <button onclick="loadData()">load Data</button>
-  <h1>Result: <span class="" id="result"></span></h1>
 
+  <div id="testPage">
+    <button onclick="posturenn.goodPosture()">Good Posture</button>
+    <button onclick="posturenn.badPosture()">Bad Posture</button>
+    <button onclick="posturenn.trainModel()">Train</button>
+    <button onclick="posturenn.saveData()">save Data</button>
+    <button onclick="posturenn.loadData()">load Data</button>
+    <h1>Result: <span class="" id="result"></span></h1>
+    <div id="sketch-holder">
+      <!-- Our sketch will go here! -->
+    </div>
+  </div>
+
+  <div id="homePage">
+
+      <div class="wrap">
+        <div class="content">
+          <div class="menu">
+              <div id="link-app">neckTech</div>
+              <div id="link-quit"><span style="opacity:0.5">&#8984;</span>Quit</div>
+          </div>
+          <div class="main">
+            <div id="inactive">
+              <div id="start">Run</div>
+            </div>
+        </div>
+        <div class="footer">
+          <div class="setting">
+            <div class="interval-title">Neck & Posture Scan Interval</div>
+            <div class="interval">
+              <div>5s</div>
+              <div>30s</div>
+              <div>1m</div>
+              <div>5m</div>
+              <div>10m</div>
+            </div>
+            <input type="range" id="slider" min="1" max="5" step="1" />
+          </div>
+
+          <div class="setting">
+            <div class="interval-title">Exercise Interval</div>
+            <div class="interval">
+              <div>5m</div>
+              <div>15m</div>
+              <div>30m</div>
+              <div>1h</div>
+              <div>2h</div>
+            </div>
+            <input type="range" id="slider" min="1" max="5" step="1" />
+          </div>
+        </div>
+        
+      </div>
+            
+
+      <div class="row">
+        <div class="column">
+          <button class="button button1">Check System Requirements</button>
+          <button class="button button1">Calibrate Posture</button>
+        </div>
+        <div class="column" >
+          <button class="button button2">Update Software</button>
+          <button class="button button2">Camera Settings</button>
+          <button class="button button2">Other Settings</button>
+          <button class="button button2">View Software License</button>
+        </div>
+      </div>
+    
+
+    </div>
+
+  <div id="calibrationPage">
+
+  </div>
+
+  <div id="exercisePage">
+
+  </div>
+
+  </div>
+
+ 
   <!-- You can also require other files to run in this process -->
   <script src="./renderer.js"></script>
+  <script src="./js/views.js"></script>
 </body>
 
 </html>
