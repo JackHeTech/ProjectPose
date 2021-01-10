@@ -3,26 +3,46 @@ let poseNet;
 let poses = [];
 
 const nn = ml5.neuralNetwork({
-  inputs: 34,
-  outputs: 2,
   task: "classification",
   debug: true,
 });
 
-function goodPosture() {
-  addPostureToData(poses, 1);
+function loadData(name) {
+  nn.loadData(`${name}_data.json`);
 }
 
-function badPosture() {
-  addPostureToData(poses, 0);
+function loadNNModel(name) {
+  console.log({
+    model: `${name}.json`,
+    metadata: `${name}_meta.json`,
+    weights: `${name}.weights.bin`,
+  });
+  nn.load(`/${name}.json`, () => {
+    // done loading
+    console.log("done");
+    classify();
+  });
 }
 
+<<<<<<< Updated upstream:exercise.js
+function saveData(name) {
+  nn.saveData(`${name}_data`);
+=======
 function loadData() {
-  nn.loadData("/data.json");
+  // nn.loadData("./data.json");
+  data.data.forEach((item) => {
+    nn.addData(
+      Object.keys(item.xs)
+        .map((key) => item.xs[key])
+        .slice(0, 12),
+      item.ys
+    );
+  });
+>>>>>>> Stashed changes:js/sketch.js
 }
 
-function saveData() {
-  nn.saveData("data");
+function saveNNModel(name) {
+  nn.save(`${name}`);
 }
 
 // Train the model
@@ -50,6 +70,7 @@ function classify() {
 }
 
 function gotResults(error, results) {
+  console.log(error);
   //  Log output
   document.getElementById("result").innerHTML = `${results[0].label} (${floor(
     results[0].confidence * 100
@@ -57,7 +78,8 @@ function gotResults(error, results) {
   // Classify again
   classify();
 }
-function getInputs(poses) {
+
+function getInputs() {
   let keypoints = poses[0].pose.keypoints;
   let inputs = [];
   for (let i = 0; i < keypoints.length; i++) {
@@ -67,10 +89,10 @@ function getInputs(poses) {
   return inputs;
 }
 
-function addPostureToData(poses, isGoodPosture) {
+function addPostureToData(posture) {
   if (!poses) return;
   nn.addData(getInputs(poses), {
-    isGoodPosture: isGoodPosture ? "GOOD" : "BAD",
+    posture,
   });
 }
 
