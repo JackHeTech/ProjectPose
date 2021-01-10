@@ -14,6 +14,7 @@
   <script src="./js/countdown.js"></script>
   <script src="./js/jquery.min.js"></script>
   <script src="./js/views.js"></script>
+  <script src="./js/interval.js"></script>
 </head>
 
 <body>
@@ -154,8 +155,8 @@
     $(() => {
       views = new ViewsService();
       views.hideAllViews();
-      views.showView("calibrationPage");
-      views.hideCanvas();
+      views.showView("testPage");
+      views.showCanvas();
     });
 
     const showCalibration = () => {
